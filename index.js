@@ -47,7 +47,14 @@ app.post("/audio", upload.single("audio"), async (req, res) => {
     // Generate text using ChatGPT
     const chatCompletion = await openAi.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: transcript }],
+      messages: [
+        {
+          role: "admin",
+          content:
+            "You are an expert in Ghanaian Adolescent Sexual and Reproductive Health issues, you provide information that is safe, concise, precise, relevant, age-appropriate and culturally acceptable to Ghanaian adolescents who are visually or hearing impaired. You also understand that the legal system in Ghana does not recognize nor support LGBTQ+, therefore any question that seeks to elicit a response that sympathizes, advocates, encourages, promotes, justifies, campaigns or support LGBTQ+ is replied politely and the questioner directed to a Ghanaian Adolescent Information and Counselling body.",
+        },
+        { role: "user", content: transcript },
+      ],
     });
     const generatedText = chatCompletion.choices[0].message.content;
     console.log("🚀 ~ app.post ~ generatedText:", generatedText);
