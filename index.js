@@ -3,9 +3,6 @@ const multer = require("multer");
 const openai = require("openai");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const axios = require("axios");
-const bufferToStream = require("buffer-to-stream");
-const { Readable } = require("readable-stream");
 const fs = require("fs");
 
 require("dotenv").config();
